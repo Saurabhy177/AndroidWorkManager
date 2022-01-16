@@ -16,6 +16,14 @@ class BlurViewModel(application: Application): ViewModel() {
 
     internal var imageUri: Uri? = null
     internal var outputUri: Uri? = null
+
+    // WorkInfo let's us know the status of WorkRequest :
+    // blocked, cancelled, enqueued, failed, running or succeeded
+    //
+    // We can get LiveData<WorkInfo> in three ways:
+    // 1. Using the unique ID of the work request
+    // 2. Using the WorkRequest's unique chain name
+    // 3. The tag name of a request that we can optionally add
     internal val outputWorkInfo: LiveData<List<WorkInfo>>
     private val workManager = WorkManager.getInstance(application)
 
